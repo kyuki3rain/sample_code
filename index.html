@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Code</title>
+
+    <style type="text/css">
+        body * {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .main {
+            flex: 1;
+            height: 70vh;
+            margin: 5vh 0;
+        }
+        
+        .container {
+            flex: 2;
+        }
+        
+        .buttonContainer {
+            flex: 1;
+        }
+        
+        .start {
+            width: 20vh;
+            height: 8vh;
+        }
+        
+        .header,
+        .footer {
+            flex: 1;
+            height: 10vh;
+            background-color: gray;
+        }
+        
+        .title {
+            font-weight: bold;
+            font-size: 8vh;
+        }
+        
+        .content {
+            font-size: 4vh;
+        }
+    </style>
+
+    <script>
+        const start = () => {
+            window.location.href = 'step1/index.html';
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main">
+        <div class="container">
+            <div class="title">Sample Codeへようこそ！</div>
+            <div class="content">Web謎を作る参考にしてくれるとうれしいな</div>
+        </div>
+        <div class="buttonContainer">
+            <input class="start content" type="button" value="start!" onClick="start()">
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+
+</html>
