@@ -1,0 +1,23 @@
+.question {
+    width: 40vw;
+}
+
+.container {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5vh;
+    width: 50vw;
+}
+
+.answer {
+    width: 40vw;
+    height: 6vh;
+    text-align: center;
+    font-size: 4vh;
+}
+
+.button {
+    width: 12vh;
+    height: 6vh;
+    font-size: 3vh;
+}
