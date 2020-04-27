@@ -2,6 +2,10 @@
 .footer {
     height: 10vh;
     background-color: gray;
+    font-size: 4vh;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10vw;
 }
 
 body * {
