@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <title>Sample Game</title>
     <link rel="stylesheet" type="text/css" href="../common.css" />
     <link rel="stylesheet" type="text/css" href="main.css" />
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript">
+      onload = function () {
+        document.getElementById("backHome").addEventListener("click", () => {
+          location.href = "../index.html";
+        });
+        document.getElementById("backIndex").addEventListener("click", () => {
+          location.href = "./index.html";
+        });
+        document.getElementById("submit").addEventListener("click", () => {
+          if (document.getElementById("ans").value === "富本銭") {
+            t = localStorage.stage1Flag.split(",");
+            t[2] = 1;
+            localStorage.stage1Flag = t;
+            alert("正解です。次の問題にすすみます。");
+            location.href = "./question4.html";
+          } else {
+            alert("答えが間違っています");
+          }
+        });
+      };
+    </script>
   </head>
 
   <body>
     <div class="header">
       <div id="headerLeft">stage1</div>
-      <div id="headerRight">question1</div>
+      <div id="headerRight">question3</div>
     </div>
     <div class="main">
-      <img src="./question1.jpg" alt="" title="question1" class="question" />
+      <div id="backIndex">＜StageTopに戻る</div>
+      <img src="./question1.jpg" alt="" title="question3" class="question" />
       <div class="inputContainer">
-        <input type="text" id="q1ans" class="answer" />
+        <input type="text" id="ans" class="answer" />
         <input type="button" id="submit" class="button" value="送信" />
       </div>
     </div>

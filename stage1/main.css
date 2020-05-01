@@ -13,14 +13,23 @@
 }
 
 .answer {
-  width: 40vw;
-  height: 6vh;
+  width: calc(30vw + 15vh);
+  height: 5vh;
   text-align: center;
   font-size: 4vh;
 }
 
 .button {
   width: 12vh;
-  height: 6vh;
+  height: 5vh;
   font-size: 3vh;
+}
+
+/* calc(?vh + ?vw)は、スマホとPCで表示をうまく合わせる裏技みたいなものです。 */
+/* @media queryとかつかえばもっとスマートでわかりやすくできるんですが、僕はこれが好きなので。 */
+
+#backIndex {
+  font-size: calc(3vh + 0.2vw);
+  margin-bottom: calc(4vh - 3vw);
+  align-self: flex-start;
 }

@@ -16,10 +16,10 @@
         document.getElementById("submit").addEventListener("click", () => {
           if (document.getElementById("ans").value === "富本銭") {
             t = localStorage.stage1Flag.split(",");
-            t[1] = 1;
+            t[3] = 1;
             localStorage.stage1Flag = t;
-            alert("正解です。次の問題にすすみます。");
-            location.href = "./question3.html";
+            alert("正解です。トップに戻ります。");
+            location.href = "index.html";
           } else {
             alert("答えが間違っています");
           }
@@ -31,11 +31,11 @@
   <body>
     <div class="header">
       <div id="headerLeft">stage1</div>
-      <div id="headerRight">question2</div>
+      <div id="headerRight">question4</div>
     </div>
     <div class="main">
       <div id="backIndex">＜StageTopに戻る</div>
-      <img src="./question1.jpg" alt="" title="question2" class="question" />
+      <img src="./question1.jpg" alt="" title="question4" class="question" />
       <div class="inputContainer">
         <input type="text" id="ans" class="answer" />
         <input type="button" id="submit" class="button" value="送信" />

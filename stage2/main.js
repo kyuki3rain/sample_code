@@ -1,8 +1,12 @@
 ans = ["富本銭", "富本銭", "富本銭", "富本銭"];
-correctFlag = new Array(4, 0);
+correctFlag = new Array(4).fill(0);
 
 function scroll_control(event) {
   event.preventDefault();
+}
+
+function goToNextStage() {
+  location.href = "./stage3.html";
 }
 
 function goToLeft(questionIndex) {
@@ -45,16 +49,17 @@ function goToFinish() {
   document.getElementsByClassName("container")[0].style.top = "0";
 }
 
-window.onload = function () {
+onload = function () {
   questions = document.getElementsByClassName("questionContainer");
   answer = document.getElementsByClassName("answer");
 
+  // PCでのマウスでのスクロール禁止
   document.addEventListener("mousewheel", scroll_control, { passive: false });
   // スマホでのタッチ操作でのスクロール禁止
   document.addEventListener("touchmove", scroll_control, { passive: false });
 
   document.getElementById("backHome").addEventListener("click", () => {
-    window.location.href = "../index.html";
+    location.href = "../index.html";
   });
 
   [].forEach.call(
@@ -74,7 +79,7 @@ window.onload = function () {
             goToRight(sindex);
           }
         } else {
-          window.alert("答えが間違っています");
+          alert("答えが間違っています");
         }
       });
     }

@@ -1,27 +1,33 @@
-body>.header,
-body>.footer {
-    height: 10vh;
-    background-color: gray;
-    font-size: 4vh;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 10vw;
+body > .header,
+body > .footer {
+  height: 10vh;
+  background-color: gray;
+  font-size: 4vh;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10vw;
 }
 
 body * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
 }
 
 .main {
-    height: 70vh;
-    margin: 5vh 0;
+  height: 70vh;
+  margin: 5vh 0;
+}
+
+.wideButton {
+  width: 30vh;
+  height: 6vh;
+  font-size: 3vh;
 }

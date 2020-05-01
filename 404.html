@@ -18,7 +18,7 @@
         flex: 1;
       }
 
-      .start {
+      .button {
         width: 20vh;
         height: 8vh;
       }
@@ -31,19 +31,13 @@
       }
 
       .content {
-        width: 80%;
+        width: 80vw;
       }
 
       .text {
         font-size: 3vh;
       }
     </style>
-
-    <script>
-      const start = () => {
-        location.href = "stage1/index.html";
-      };
-    </script>
   </head>
 
   <body>
@@ -51,14 +45,15 @@
     <div class="main">
       <div class="container">
         <div class="title">Sample Code<br />へようこそ！</div>
-        <div class="content text">Web謎を作る参考にしてくれるとうれしいな</div>
+        <div class="content text">存在しないurlだとここにたどり着くよ。</div>
+        <div class="content text">下のボタンを押して前の画面に戻ろう！</div>
       </div>
       <div class="buttonContainer">
         <input
-          class="start text"
+          class="button text"
           type="button"
-          value="start!"
-          onClick="start()"
+          value="goBack!"
+          onClick="history.back()"
         />
       </div>
     </div>

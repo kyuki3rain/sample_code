@@ -4,24 +4,63 @@
     <meta charset="UTF-8" />
     <title>Sample Game</title>
     <link rel="stylesheet" type="text/css" href="../common.css" />
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <script type="text/javascript" src="main.js"></script>
+    <style>
+      .questionLink {
+        font-size: 5vh;
+        margin: 1vh;
+      }
+      #next {
+        display: none;
+        margin-top: 3vh;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        if (localStorage.stage1Flag == null) {
+          localStorage.stage1Flag = new Array(4).fill(0);
+        }
+        // localStorageは文字列でしか入らないので、splitで配列に直し、要素もNumberで数字に戻す必要があります。
+        if (
+          localStorage.stage1Flag
+            .split(",")
+            .reduce((p, c) => Number(p) + Number(c)) >= 4
+        ) {
+          document.getElementById("next").style.display = "flex";
+        }
+        [].forEach.call(
+          document.getElementsByClassName("questionLink"),
+          (q, i) => {
+            q.addEventListener("click", () => {
+              location.href = "question" + (i + 1) + ".html";
+            });
+          }
+        );
+      };
+      function goToNextStage() {
+        location.href = "../stage2/index.html";
+      }
+    </script>
   </head>
-
   <body>
     <div class="header">
       <div id="headerLeft">stage1</div>
       <div id="headerRight">question1</div>
     </div>
     <div class="main">
-      <img src="./question1.jpg" alt="" title="question1" class="question" />
-      <div class="inputContainer">
-        <input type="text" id="q1ans" class="answer" />
-        <input type="button" id="submit" class="button" value="送信" />
-      </div>
+      <div class="questionLink">question1</div>
+      <div class="questionLink">question2</div>
+      <div class="questionLink">question3</div>
+      <div class="questionLink">question4</div>
+      <input
+        type="button"
+        class="wideButton"
+        id="next"
+        onClick="goToNextStage()"
+        value="go to next stage!"
+      />
     </div>
     <div class="footer">
-      <div id="backHome">Homeへ戻る</div>
+      <div id="backHome">Homeに戻る</div>
     </div>
   </body>
 </html>
