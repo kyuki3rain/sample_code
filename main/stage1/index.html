@@ -22,22 +22,27 @@
         </div>
       </div>
       <div class="questionContainer">
-          <div class="mov">
-            <!-- <audio src="../voices/test.wav"></audio> -->
-            <video src="./question4.mp4"></video>
-          </div>
-          <div class="aucon">
-            <div id="play"></div>
-            <div id="stop"></div>
-            <div id="seek">
-                <div id="time" style="color:white;margin:0 0 0 1vw;font-size:1.5vw;">
-                    <span id="current">00:00</span>
-                    <span>/</span>
-                    <span id="duration">00:00</span>
-                  </div>
-                  <div id="seekbar"></div>
-                </div>
+        <div id="mov">
+          <video class="hidden" src="question4.mp4"></video>
+          <div id="seek">
+            <div
+              id="time"
+              style="
+                color: white;
+                margin: 0 0 0 1vw;
+                font-size: 1vw;
+                flex-direction: row;
+                align-self: flex-start;
+              "
+            >
+              <span id="current">00:00</span>
+              <span>/</span>
+              <span id="duration">00:00</span>
             </div>
+            <div id="seekbar"></div>
+          </div>
+          <div id="play"></div>
+          <div id="pause"></div>
         </div>
         <div class="inputContainer">
           <input type="text" class="answer" />

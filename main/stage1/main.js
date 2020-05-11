@@ -1,4 +1,4 @@
-ans = ["富本銭", "富本銭", "富本銭", "富本銭"];
+ans = ["", "", "富本銭", "富本銭"];
 correctFlag = new Array(4).fill(0);
 
 function scroll_control(event) {
@@ -6,9 +6,9 @@ function scroll_control(event) {
 }
 
 function goToNextStage() {
-  t = localStorage.stage1Flag.split(",");
+  t = localStorage.stageFlag.split(",");
   t[0] = 1;
-  localStorage.stage1Flag = t;
+  localStorage.stageFlag = t;
   location.href = "./stage3.html";
 }
 
@@ -71,57 +71,41 @@ function playTime(t) {
   return hms;
 }
 
-function play(audio, play) {
-  audio.play();
-  play.style.backgroundImage = "url(images/pause.png)";
-}
+const play = () => {
+  document.getElementsByTagName("video")[0].play();
+  document.getElementById("play").style.display = "none";
+  document.getElementById("stop").style.display = "flex";
+};
 
-function pause(audio, play) {
-  audio.pause();
-  play.style.backgroundImage = "url(images/start.png)";
-}
+const pause = () => {
+  document.getElementsByTagName("video")[0].pause();
+  document.getElementById("stop").style.display = "none";
+  document.getElementById("play").style.display = "flex";
+};
 
-function stop(audio, play) {
-  audio.pause();
-  audio.currentTime = 0;
-  play.style.backgroundImage = "url(images/start.png)";
-}
+const stop = () => {
+  document.getElementsByTagName("video")[0].pause();
+  document.getElementsByTagName("video")[0].currentTime = 0;
+  document.getElementById("stop").style.display = "none";
+  document.getElementById("play").style.display = "flex";
+};
 
-var playButton = document.getElementById("play");
-var stopButton = document.getElementById("stop");
-var btn = document.getElementsByClassName("but");
-let audio = document.getElementsByTagName("audio");
-for (let i = 0; i < btn.length; i++) {
-  audio[i].play();
-  audio[i].pause();
+function movieFunc() {
+  let video = document.getElementsByTagName("video");
+
+  document.getElementById("pause").addEventListener("click", pause);
+
+  document.getElementById("play").addEventListener("click", play);
+
   document.getElementById("current").innerHTML = playTime(
-    Math.floor(audio[i].currentTime)
+    Math.floor(video[0].currentTime)
   );
   document.getElementById("duration").innerHTML = playTime(
-    Math.round(audio[i].duration)
+    Math.round(video[0].duration)
   );
-  playButton.addEventListener("click", playB);
-  stopButton.addEventListener("click", stopB);
-
-  audio[i].addEventListener("timeupdate", (e) => {
-    const current = Math.floor(audio[i].currentTime);
-    const duration = Math.round(audio[i].duration);
-    if (!isNaN(duration)) {
-      document.getElementById("current").innerHTML = playTime(current);
-      document.getElementById("duration").innerHTML = playTime(duration);
-      const percent =
-        Math.round((audio[i].currentTime / audio[i].duration) * 1000) / 10;
-      document.getElementById("seekbar").style.backgroundSize = percent + "%";
-    }
-  });
-
-  audio[i].addEventListener("ended", () => {
-    play.style.backgroundImage = "url(images/start.png)";
-    document.getElementById("seekbar").style.backgroundSize = 0;
-  });
 
   document.getElementById("seekbar").addEventListener("click", (e) => {
-    const duration = Math.round(audio[i].duration);
+    const duration = Math.round(video[0].duration);
     if (!isNaN(duration)) {
       const mouse = e.pageX;
       const element = document.getElementById("seekbar");
@@ -129,9 +113,26 @@ for (let i = 0; i < btn.length; i++) {
       const position = rect.left + window.pageXOffset;
       const offset = mouse - position;
       const width = rect.right - rect.left;
-      audio[i].currentTime = Math.round(duration * (offset / width));
+      video[0].currentTime = Math.round(duration * (offset / width));
+      const percent =
+        Math.round((video[0].currentTime / video[0].duration) * 1000) / 10;
+      document.getElementById("seekbar").style.backgroundSize = percent + "%";
     }
   });
+
+  video[0].addEventListener("timeupdate", (e) => {
+    const current = Math.floor(video[0].currentTime);
+    const duration = Math.round(video[0].duration);
+    if (!isNaN(duration)) {
+      document.getElementById("current").innerHTML = playTime(current);
+      document.getElementById("duration").innerHTML = playTime(duration);
+      const percent =
+        Math.round((video[0].currentTime / video[0].duration) * 1000) / 10;
+      document.getElementById("seekbar").style.backgroundSize = percent + "%";
+    }
+  });
+
+  video[0].addEventListener("ended", () => stop(video[0]));
 }
 
 onload = function () {
@@ -147,12 +148,15 @@ onload = function () {
     location.href = "../index.html";
   });
 
+  movieFunc();
+
   [].forEach.call(
     document.getElementsByClassName("submit"),
     (element, sindex) => {
       element.addEventListener("click", () => {
         if (answer[sindex].value === ans[sindex]) {
           correctFlag[sindex] = 1;
+          if (sindex == 1) pause();
 
           if (correctFlag.reduce((p, c) => p + c) >= 4) {
             document.getElementById("headerRight").innerHTML = "end";

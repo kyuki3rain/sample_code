@@ -9,7 +9,7 @@
   flex-direction: row;
   justify-content: space-around;
   margin-top: 5vh;
-  height: 30vh;
+  height: 15vh;
 }
 
 .answer {
@@ -53,83 +53,64 @@
   left: 0;
 }
 
-.aucon {
-  display: flex;
-  flex-direction: row;
-  align-items: top;
-  height: 8vw;
-  width: 70vw;
-  justify-content: space-around;
+#mov {
+  width: 40vw;
+  height: 50vh;
+  position: relative;
 }
 
-.mov {
-  height: 34vw;
-  display: flex;
-  align-items: center;
+video {
+  position: absolute;
+  height: 46vh;
+  top: 0;
 }
 
 #play {
-  background: url("../images/start.png") left top no-repeat;
-  width: 8vw;
-  height: 8vw;
-  background-size: contain;
-  border: none;
-  outline: none;
-  -moz-transition-property: width, height, margin-top;
-  -moz-transition-duration: 0.2s;
-  -moz-transition-timing-function: ease;
-  -webkit-transition: all 0.2s ease 0;
-  border-radius: 8vw;
+  position: absolute;
+  width: 40vw;
+  height: 50vh;
+  top: 0;
+  left: 0;
 }
 
 #play:hover {
-  box-shadow: 0 0 6px gray;
-}
-/* #play:active{
-  width:4.8vw;
-  height:4.8vw;
-} */
-
-#stop {
-  background: url("../images/stop.png") left top no-repeat;
-  width: 8vw;
-  height: 8vw;
-  background-size: contain;
-  border: none;
-  outline: none;
-  -moz-transition-property: width, height, margin-top;
-  -moz-transition-duration: 0.2s;
-  -moz-transition-timing-function: ease;
-  -webkit-transition: all 0.2s ease 0;
-  border-radius: 8vw;
+  background: url(./start.png) top no-repeat;
+  background-size: cover;
+  opacity: 50%;
 }
 
-#stop:hover {
-  box-shadow: 0 0 6px gray;
+#pause {
+  position: absolute;
+  width: 40vw;
+  height: 50vh;
+  top: 0;
+  left: 0;
+  display: none;
 }
-/* #stop:active{
-  width:4.8vw;
-  height:4.8vw;
-} */
+
+#pause:hover {
+  background: url(./stop.png) top no-repeat;
+  background-size: cover;
+  opacity: 50%;
+}
 
 #seek {
-  width: 50vw;
-  height: 8vw;
+  z-index: 2;
+  position: absolute;
+  bottom: -1vh;
+  left: 0;
+  height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
+  background-color: black;
 }
 
 #seekbar {
-  width: 48vw;
-  height: 1vw;
-  margin: 0.5vw 0 0.5vw 1vw;
+  width: 40vw;
+  height: 1vh;
   border-radius: 5px;
   background: linear-gradient(rgb(194, 24, 24), rgb(194, 24, 24)) no-repeat
     rgb(187, 187, 187);
-}
-
-video {
-  height: 30vw;
 }

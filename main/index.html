@@ -21,25 +21,25 @@
     </style>
     <script type="text/javascript">
       onload = () => {
-        if (localStorage.stage1Flag == null) {
-          localStorage.stage1Flag = new Array(4).fill(0);
+        if (localStorage.stageFlag == null) {
+          localStorage.stageFlag = new Array(4).fill(0);
         }
         // localStorageは文字列でしか入らないので、splitで配列に直し、要素もNumberで数字に戻す必要があります。
         if (
-          localStorage.stage1Flag
+          localStorage.stageFlag
             .split(",")
             .reduce((p, c) => Number(p) + Number(c)) >= 4
         ) {
           document.getElementById("next").style.display = "flex";
         }
         if (
-          localStorage.stage1Flag
+          localStorage.stageFlag
             .split(",")
             .reduce((p, c) => Number(p) + Number(c)) >= 1
         ) {
           document.getElementById("reset").style.display = "flex";
           document.getElementById("reset").addEventListener("click", () => {
-            localStorage.stage1Flag = new Array(4).fill(0);
+            localStorage.stageFlag = new Array(4).fill(0);
             location.href = "index.html";
           });
         }
@@ -59,8 +59,8 @@
   </head>
   <body>
     <div class="header">
-      <div id="headerLeft">stage1</div>
-      <div id="headerRight">question1</div>
+      <div id="headerLeft"></div>
+      <div id="headerRight"></div>
     </div>
     <div class="main">
       <div class="questionLink">stage1</div>
