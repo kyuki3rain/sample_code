@@ -48,6 +48,8 @@
         opacity: 100;
         transition: opacity 0.5s;
         /* https://developer.mozilla.org/ja/docs/Web/CSS/transition */
+        pointer-events: none;
+        /* これがないとクリックイベントを全部こいつに吸われます */
       }
       video {
         height: 100vh;
@@ -56,7 +58,7 @@
 
     <script>
       const start = () => {
-        location.href = "main/index.html";
+        location.href = "./main/index.html";
       };
       window.onload = () => {
         document.getElementById("mov").play();

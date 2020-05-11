@@ -9,6 +9,10 @@
       .questionLink {
         font-size: 5vh;
         margin: 1vh;
+        width: 20vw;
+        height: 10vh;
+        background-color: skyblue;
+        border-radius: 5vh;
       }
       #next {
         display: none;
@@ -24,31 +28,27 @@
         if (localStorage.stageFlag == null) {
           localStorage.stageFlag = new Array(4).fill(0);
         }
+        stageFlag = localStorage.stageFlag.split(",");
         // localStorageは文字列でしか入らないので、splitで配列に直し、要素もNumberで数字に戻す必要があります。
-        if (
-          localStorage.stageFlag
-            .split(",")
-            .reduce((p, c) => Number(p) + Number(c)) >= 4
-        ) {
+        if (stageFlag.reduce((p, c) => Number(p) + Number(c)) >= 4) {
           document.getElementById("next").style.display = "flex";
         }
-        if (
-          localStorage.stageFlag
-            .split(",")
-            .reduce((p, c) => Number(p) + Number(c)) >= 1
-        ) {
+        if (stageFlag.reduce((p, c) => Number(p) + Number(c)) >= 1) {
           document.getElementById("reset").style.display = "flex";
-          document.getElementById("reset").addEventListener("click", () => {
-            localStorage.stageFlag = new Array(4).fill(0);
-            location.href = "index.html";
-          });
         }
+        document.getElementById("reset").addEventListener("click", () => {
+          localStorage.stageFlag = new Array(4).fill(0);
+          location.href = "index.html";
+        });
         [].forEach.call(
           document.getElementsByClassName("questionLink"),
           (q, i) => {
-            q.addEventListener("click", () => {
-              location.href = "stage" + (i + 1) + "/index.html";
-            });
+            if (i == 0 || stageFlag[i - 1] == 1)
+              q.addEventListener("click", () => {
+                location.href = "stage" + (i + 1) + "/index.html";
+              });
+            // else q.style.backgroundColor = "rgba(0, 128, 0, 0.3)";
+            else q.style.opacity = "0.3";
           }
         );
       };
