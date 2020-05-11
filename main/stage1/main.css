@@ -1,18 +1,15 @@
 .question {
-  max-width: 95%;
-  min-width: 40%;
-  width: 80vh;
-  height: auto;
+  height: 55vh;
 }
 
 .inputContainer {
   flex-direction: row;
   justify-content: space-around;
   margin-top: 5vh;
-  height: 15vh;
+  height: 10vh;
 }
 
-.answer {
+.textArea {
   width: 40vw;
   height: 6vh;
   text-align: center;
@@ -51,6 +48,25 @@
 .first {
   top: 0;
   left: 0;
+}
+
+select {
+  width: 10vw;
+  height: 6vh;
+  text-align: center;
+  font-size: 4vh;
+}
+
+.range {
+  width: 40vw;
+  height: 6vh;
+  align-items: unset;
+  /* 今回みたいにデフォルトで全体に指定しちゃうと、こういう標準で用意してくれてるものを使うときバグります。。。 */
+}
+
+#output1 {
+  font-size: 2vw;
+  margin: 0 3vw;
 }
 
 #mov {

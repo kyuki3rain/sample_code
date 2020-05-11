@@ -17,13 +17,13 @@
       <div class="questionContainer first">
         <img src="./question1.jpg" alt="" title="question1" class="question" />
         <div class="inputContainer">
-          <input type="text" class="answer" />
+          <input type="password" class="answer textArea" />
           <input type="button" class="button submit" value="送信" />
         </div>
       </div>
       <div class="questionContainer">
         <div id="mov">
-          <video class="hidden" src="question4.mp4"></video>
+          <video class="hidden" src="question2.mp4"></video>
           <div id="seek">
             <div
               id="time"
@@ -45,21 +45,53 @@
           <div id="pause"></div>
         </div>
         <div class="inputContainer">
-          <input type="text" class="answer" />
+          <input type="text" class="answer textArea" />
           <input type="button" class="button submit" value="送信" />
         </div>
       </div>
       <div class="questionContainer">
-        <img src="./question1.jpg" alt="" title="question1" class="question" />
+        <img src="./question3.jpg" alt="" title="question3" class="question" />
         <div class="inputContainer">
-          <input type="text" class="answer" />
+          <div>
+            <input
+              type="range"
+              class="answer range"
+              value="0"
+              min="0"
+              max="9"
+              step="1"
+              oninput="document.getElementById('output1').value=this.value"
+              list="data1"
+            />
+            <datalist
+              id="data1"
+              style="
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+              "
+            >
+              <option value="0" label="0"></option>
+              <option value="1" label="1"></option>
+              <option value="2" label="2"></option>
+              <option value="3" label="3"></option>
+              <option value="4" label="4"></option>
+              <option value="5" label="5"></option>
+              <option value="6" label="6"></option>
+              <option value="7" label="7"></option>
+              <option value="8" label="8"></option>
+              <option value="9" label="9"></option>
+            </datalist>
+            <!-- この辺、対応があやしいらしいので注意 -->
+          </div>
+          <output id="output1">0</output>
           <input type="button" class="button submit" value="送信" />
         </div>
       </div>
       <div class="questionContainer">
-        <img src="./question1.jpg" alt="" title="question1" class="question" />
+        <img src="./question4.jpg" alt="" title="question1" class="question" />
         <div class="inputContainer">
-          <input type="text" class="answer" />
+          <select class="answer select"> </select>
           <input type="button" class="button submit" value="送信" />
         </div>
       </div>

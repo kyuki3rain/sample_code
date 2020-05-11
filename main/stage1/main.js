@@ -1,4 +1,4 @@
-ans = ["", "", "富本銭", "富本銭"];
+ans = [["ootoro", "OOTORO"], ["たいせいほうかん", "大政奉還"], ["4"], ["V"]];
 correctFlag = new Array(4).fill(0);
 
 function scroll_control(event) {
@@ -9,7 +9,7 @@ function goToNextStage() {
   t = localStorage.stageFlag.split(",");
   t[0] = 1;
   localStorage.stageFlag = t;
-  location.href = "./stage3.html";
+  location.href = "../stage2/index.html";
 }
 
 function goToLeft(questionIndex) {
@@ -150,11 +150,23 @@ onload = function () {
 
   movieFunc();
 
+  const ACode = "A".charCodeAt(0);
+
+  for (let i = 0; i < 26; i++) {
+    var option = document.createElement("option");
+    // classを追加
+    option.value = String.fromCharCode(ACode + i);
+    option.innerHTML = String.fromCharCode(ACode + i);
+
+    // 生成したdiv要素を追加する
+    document.getElementsByClassName("select")[0].appendChild(option);
+  }
+
   [].forEach.call(
     document.getElementsByClassName("submit"),
     (element, sindex) => {
       element.addEventListener("click", () => {
-        if (answer[sindex].value === ans[sindex]) {
+        if (ans[sindex].includes(answer[sindex].value)) {
           correctFlag[sindex] = 1;
           if (sindex == 1) pause();
 
