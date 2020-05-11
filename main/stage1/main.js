@@ -74,19 +74,19 @@ function playTime(t) {
 const play = () => {
   document.getElementsByTagName("video")[0].play();
   document.getElementById("play").style.display = "none";
-  document.getElementById("stop").style.display = "flex";
+  document.getElementById("pause").style.display = "flex";
 };
 
 const pause = () => {
   document.getElementsByTagName("video")[0].pause();
-  document.getElementById("stop").style.display = "none";
+  document.getElementById("pause").style.display = "none";
   document.getElementById("play").style.display = "flex";
 };
 
 const stop = () => {
   document.getElementsByTagName("video")[0].pause();
   document.getElementsByTagName("video")[0].currentTime = 0;
-  document.getElementById("stop").style.display = "none";
+  document.getElementById("pause").style.display = "none";
   document.getElementById("play").style.display = "flex";
 };
 
