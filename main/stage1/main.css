@@ -1,0 +1,135 @@
+.question {
+  max-width: 95%;
+  min-width: 40%;
+  width: 80vh;
+  height: auto;
+}
+
+.inputContainer {
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5vh;
+  height: 30vh;
+}
+
+.answer {
+  width: 40vw;
+  height: 6vh;
+  text-align: center;
+  font-size: 4vh;
+}
+
+.button {
+  width: 12vh;
+  height: 6vh;
+  font-size: 3vh;
+}
+
+.main {
+  position: relative;
+  overflow: hidden;
+}
+
+.questionContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 100vw;
+  transition: left 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100vh;
+  left: 0;
+  transition: left 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
+.first {
+  top: 0;
+  left: 0;
+}
+
+.aucon {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  height: 8vw;
+  width: 70vw;
+  justify-content: space-around;
+}
+
+.mov {
+  height: 34vw;
+  display: flex;
+  align-items: center;
+}
+
+#play {
+  background: url("../images/start.png") left top no-repeat;
+  width: 8vw;
+  height: 8vw;
+  background-size: contain;
+  border: none;
+  outline: none;
+  -moz-transition-property: width, height, margin-top;
+  -moz-transition-duration: 0.2s;
+  -moz-transition-timing-function: ease;
+  -webkit-transition: all 0.2s ease 0;
+  border-radius: 8vw;
+}
+
+#play:hover {
+  box-shadow: 0 0 6px gray;
+}
+/* #play:active{
+  width:4.8vw;
+  height:4.8vw;
+} */
+
+#stop {
+  background: url("../images/stop.png") left top no-repeat;
+  width: 8vw;
+  height: 8vw;
+  background-size: contain;
+  border: none;
+  outline: none;
+  -moz-transition-property: width, height, margin-top;
+  -moz-transition-duration: 0.2s;
+  -moz-transition-timing-function: ease;
+  -webkit-transition: all 0.2s ease 0;
+  border-radius: 8vw;
+}
+
+#stop:hover {
+  box-shadow: 0 0 6px gray;
+}
+/* #stop:active{
+  width:4.8vw;
+  height:4.8vw;
+} */
+
+#seek {
+  width: 50vw;
+  height: 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+#seekbar {
+  width: 48vw;
+  height: 1vw;
+  margin: 0.5vw 0 0.5vw 1vw;
+  border-radius: 5px;
+  background: linear-gradient(rgb(194, 24, 24), rgb(194, 24, 24)) no-repeat
+    rgb(187, 187, 187);
+}
+
+video {
+  height: 30vw;
+}

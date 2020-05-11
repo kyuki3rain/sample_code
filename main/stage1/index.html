@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Sample Game</title>
-    <link rel="stylesheet" type="text/css" href="../common.css" />
+    <link rel="stylesheet" type="text/css" href="../../common.css" />
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script type="text/javascript" src="main.js"></script>
   </head>
@@ -22,7 +22,23 @@
         </div>
       </div>
       <div class="questionContainer">
-        <img src="./question1.jpg" alt="" title="question1" class="question" />
+          <div class="mov">
+            <!-- <audio src="../voices/test.wav"></audio> -->
+            <video src="./question4.mp4"></video>
+          </div>
+          <div class="aucon">
+            <div id="play"></div>
+            <div id="stop"></div>
+            <div id="seek">
+                <div id="time" style="color:white;margin:0 0 0 1vw;font-size:1.5vw;">
+                    <span id="current">00:00</span>
+                    <span>/</span>
+                    <span id="duration">00:00</span>
+                  </div>
+                  <div id="seekbar"></div>
+                </div>
+            </div>
+        </div>
         <div class="inputContainer">
           <input type="text" class="answer" />
           <input type="button" class="button submit" value="送信" />

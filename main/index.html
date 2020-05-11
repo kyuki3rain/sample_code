@@ -12,7 +12,11 @@
       }
       #next {
         display: none;
-        margin-top: 3vh;
+        margin: 3vh;
+      }
+      #reset {
+        display: none;
+        font-size: 3vh;
       }
     </style>
     <script type="text/javascript">
@@ -28,11 +32,22 @@
         ) {
           document.getElementById("next").style.display = "flex";
         }
+        if (
+          localStorage.stage1Flag
+            .split(",")
+            .reduce((p, c) => Number(p) + Number(c)) >= 1
+        ) {
+          document.getElementById("reset").style.display = "flex";
+          document.getElementById("reset").addEventListener("click", () => {
+            localStorage.stage1Flag = new Array(4).fill(0);
+            location.href = "index.html";
+          });
+        }
         [].forEach.call(
           document.getElementsByClassName("questionLink"),
           (q, i) => {
             q.addEventListener("click", () => {
-              location.href = "question" + (i + 1) + ".html";
+              location.href = "stage" + (i + 1) + "/index.html";
             });
           }
         );
@@ -48,10 +63,10 @@
       <div id="headerRight">question1</div>
     </div>
     <div class="main">
-      <div class="questionLink">question1</div>
-      <div class="questionLink">question2</div>
-      <div class="questionLink">question3</div>
-      <div class="questionLink">question4</div>
+      <div class="questionLink">stage1</div>
+      <div class="questionLink">stage2</div>
+      <div class="questionLink">stage3</div>
+      <div class="questionLink">stage4</div>
       <input
         type="button"
         class="wideButton"
@@ -59,6 +74,7 @@
         onClick="goToNextStage()"
         value="go to next stage!"
       />
+      <div id="reset">リセットする</div>
     </div>
     <div class="footer">
       <div id="backHome">Homeに戻る</div>

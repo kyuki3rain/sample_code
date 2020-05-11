@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../common.css" />
     <link rel="stylesheet" type="text/css" href="main.css" />
+    <style>
+      .choices {
+        width: calc(8vh + 1vw);
+        height: calc(8vh + 1vw);
+        margin: 0 calc(1vh + 1vw);
+      }
+    </style>
+
     <script type="text/javascript">
       onload = function () {
         document.getElementById("backHome").addEventListener("click", () => {
@@ -14,17 +22,22 @@
         document.getElementById("backIndex").addEventListener("click", () => {
           location.href = "./index.html";
         });
-        document.getElementById("submit").addEventListener("click", () => {
-          if (document.getElementById("ans").value === "富本銭") {
-            t = localStorage.stage1Flag.split(",");
-            t[1] = 1;
-            localStorage.stage1Flag = t;
-            alert("正解です。次の問題にすすみます。");
-            location.href = "./question3.html";
-          } else {
-            alert("答えが間違っています");
+        [].forEach.call(
+          document.getElementsByClassName("choices"),
+          (choice) => {
+            choice.addEventListener("click", () => {
+              if (choice.value === "が") {
+                t = localStorage.stage1Flag.split(",");
+                t[1] = 1;
+                localStorage.stage1Flag = t;
+                alert("正解です。次の問題にすすみます。");
+                location.href = "./question3.html";
+              } else {
+                alert("答えが間違っています");
+              }
+            });
           }
-        });
+        );
       };
     </script>
   </head>
@@ -38,8 +51,10 @@
       <div id="backIndex">＜StageTopに戻る</div>
       <img src="./question1.jpg" alt="" title="question2" class="question" />
       <div class="inputContainer">
-        <input type="text" id="ans" class="answer" />
-        <input type="button" id="submit" class="button" value="送信" />
+        <input type="button" class="choices" value="が" />
+        <input type="button" class="choices" value="ん" />
+        <input type="button" class="choices" value="ば" />
+        <input type="button" class="choices" value="れ" />
       </div>
     </div>
     <div class="footer">

@@ -38,11 +38,32 @@
       .text {
         font-size: 3vh;
       }
+      #movContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        opacity: 100;
+        transition: opacity 0.5s;
+        /* https://developer.mozilla.org/ja/docs/Web/CSS/transition */
+      }
+      video {
+        height: 100vh;
+      }
     </style>
 
     <script>
       const start = () => {
         location.href = "stage1/index.html";
+      };
+      window.onload = () => {
+        document.getElementById("mov").play();
+        document.getElementById("mov").addEventListener("ended", () => {
+          document.getElementById("movContainer").style.opacity = "0";
+          // http://www.htmq.com/video/
+        });
       };
     </script>
   </head>
@@ -50,6 +71,9 @@
   <body>
     <div class="header"></div>
     <div class="main">
+      <div id="movContainer">
+        <video src="./question4.mp4" id="mov" muted="muted"></video>
+      </div>
       <div class="container">
         <div class="title">Sample Code<br />へようこそ！</div>
         <div class="content text">Web謎を作る参考にしてくれるとうれしいな</div>

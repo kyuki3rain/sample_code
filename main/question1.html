@@ -7,25 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../common.css" />
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script type="text/javascript">
-      onload = function () {
-        document.getElementById("backHome").addEventListener("click", () => {
-          location.href = "../index.html";
-        });
-        document.getElementById("backIndex").addEventListener("click", () => {
-          location.href = "./index.html";
-        });
-        document.getElementById("submit").addEventListener("click", () => {
-          if (document.getElementById("ans").value === "富本銭") {
-            t = localStorage.stage1Flag.split(",");
-            t[0] = 1;
-            localStorage.stage1Flag = t;
-            alert("正解です。次の問題にすすみます。");
-            location.href = "./question2.html";
-          } else {
-            alert("答えが間違っています");
-          }
-        });
-      };
+      onload = function () {};
     </script>
   </head>
 
