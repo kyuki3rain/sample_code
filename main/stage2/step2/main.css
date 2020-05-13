@@ -45,33 +45,9 @@
   width: 30vw;
 }
 
-.tenkeyContainer {
-  flex-direction: row;
-}
-
 .text {
   font-size: 5vh;
   height: 10vh;
-}
-
-.tenkey {
-  background-color: black;
-  padding: 5vh;
-  height: 45vh;
-  border-top-right-radius: 4vh;
-  border-top-left-radius: 4vh;
-  width: 20vw;
-}
-
-.display {
-  background-color: black;
-  padding: 0 5vh 5vh;
-  border-bottom-right-radius: 4vh;
-  border-bottom-left-radius: 4vh;
-  height: 24vh;
-  width: 20vw;
-  justify-content: start;
-  margin-bottom: 1vh;
 }
 
 .main {

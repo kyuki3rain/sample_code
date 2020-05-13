@@ -9,6 +9,8 @@
   border-bottom: solid 4px #929292;
   border-radius: 3px;
   margin: 1vh;
+  color: black;
+  font-size: 1vw;
 }
 .button:active {
   /*ボタンを押したとき*/

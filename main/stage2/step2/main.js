@@ -38,15 +38,17 @@ onload = function () {
   }
 
   let prevButton = 0;
-  let step = 0;
+  let step = 0,
+    point = 0;
 
-  this.document.getElementById("reset").addEventListener("click", () => {
+  document.getElementById("reset").addEventListener("click", () => {
     for (let i = 0; i < core.length; i++) {
       for (let j = i + 1; j < core.length; j++) {
         lines[i][j].hide();
       }
     }
     prevButton = 0;
+    point = 0;
     step = 0;
   });
 
@@ -58,10 +60,10 @@ onload = function () {
           i = Math.min(prevButton, index);
           j = Math.max(prevButton, index);
           lines[i][j].show();
-          this.console.log(prevButton, index, lines[i][j]);
           prevButton = index;
           if (answer[step] === index) {
-            if (step + 1 >= answer.length) {
+            point++;
+            if (point >= answer.length) {
               t = localStorage.stage2Flag.split(",");
               t[1] = 1;
               localStorage.stage2Flag = t;

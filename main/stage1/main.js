@@ -1,4 +1,4 @@
-ans = [["ootoro", "OOTORO"], ["たいせいほうかん", "大政奉還"], ["4"], ["V"]];
+ans = [["ootoro", "OOTORO"], ["ほうこうてんかん", "方向転換"], ["4"], ["V"]];
 correctFlag = new Array(4).fill(0);
 
 function scroll_control(event) {
