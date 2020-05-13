@@ -9,6 +9,10 @@ function remove(lines) {
 }
 
 onload = function () {
+  document.getElementById("backHome").addEventListener("click", () => {
+    location.href = "../";
+  });
+
   core = document.getElementsByClassName("core");
 
   let lines = new Array(core.length);
@@ -59,7 +63,7 @@ onload = function () {
           if (answer[step] === index) {
             if (step + 1 >= answer.length) {
               t = localStorage.stage2Flag.split(",");
-              t[0] = 1;
+              t[1] = 1;
               localStorage.stage2Flag = t;
               setTimeout(() => {
                 alert("正解です。次の問題にすすみます。");

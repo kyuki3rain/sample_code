@@ -136,6 +136,10 @@ function movieFunc() {
 }
 
 onload = function () {
+  document.getElementById("backHome").addEventListener("click", () => {
+    location.href = "../";
+  });
+
   questions = document.getElementsByClassName("questionContainer");
   answer = document.getElementsByClassName("answer");
 

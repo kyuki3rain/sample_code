@@ -9,6 +9,10 @@ function remove(lines) {
 }
 
 onload = function () {
+  document.getElementById("backHome").addEventListener("click", () => {
+    location.href = "../";
+  });
+
   core = document.getElementsByClassName("core");
 
   let lines = new Array(core.length);

@@ -25,6 +25,9 @@
     </style>
     <script type="text/javascript">
       onload = () => {
+        document.getElementById("backHome").addEventListener("click", () => {
+          location.href = "../";
+        });
         if (localStorage.stage2Flag == null) {
           localStorage.stage2Flag = new Array(4).fill(0);
         }
@@ -80,7 +83,7 @@
       <div id="reset">リセットする</div>
     </div>
     <div class="footer">
-      <div id="backHome">Homeに戻る</div>
+      <div id="backHome">戻る</div>
     </div>
   </body>
 </html>
