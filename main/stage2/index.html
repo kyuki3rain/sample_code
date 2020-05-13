@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sample Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../../common.css" />
+    <style>
+      .questionLink {
+        font-size: 5vh;
+        margin: 1vh;
+        width: 20vw;
+        height: 10vh;
+        background-color: skyblue;
+        border-radius: 5vh;
+      }
+      #next {
+        display: none;
+        margin: 3vh;
+      }
+      #reset {
+        display: none;
+        font-size: 3vh;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        if (localStorage.stage2Flag == null) {
+          localStorage.stage2Flag = new Array(4).fill(0);
+        }
+        stage2Flag = localStorage.stage2Flag.split(",");
+        // localStorageは文字列でしか入らないので、splitで配列に直し、要素もNumberで数字に戻す必要があります。
+        if (stage2Flag.reduce((p, c) => Number(p) + Number(c)) >= 4) {
+          document.getElementById("next").style.display = "flex";
+        }
+        if (stage2Flag.reduce((p, c) => Number(p) + Number(c)) >= 1) {
+          document.getElementById("reset").style.display = "flex";
+        }
+        document.getElementById("reset").addEventListener("click", () => {
+          localStorage.stage2Flag = new Array(4).fill(0);
+          location.href = "index.html";
+        });
+        [].forEach.call(
+          document.getElementsByClassName("questionLink"),
+          (q, i) => {
+            if (i == 0 || stage2Flag[i - 1] == 1)
+              q.addEventListener("click", () => {
+                location.href = "step" + (i + 1) + "/index.html";
+              });
+            // else q.style.backgroundColor = "rgba(0, 128, 0, 0.3)";
+            else q.style.opacity = "0.3";
+          }
+        );
+      };
+      function goToNextStage() {
+        t = localStorage.stageFlag.split(",");
+        t[0] = 1;
+        localStorage.stageFlag = t;
+        location.href = "../stage3/index.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <div id="headerLeft"></div>
+      <div id="headerRight"></div>
+    </div>
+    <div class="main">
+      <div class="questionLink">step1</div>
+      <div class="questionLink">step2</div>
+      <div class="questionLink">step3</div>
+      <div class="questionLink">step4</div>
+      <input
+        type="button"
+        class="wideButton"
+        id="next"
+        onClick="goToNextStage()"
+        value="go to next stage!"
+      />
+      <div id="reset">リセットする</div>
+    </div>
+    <div class="footer">
+      <div id="backHome">Homeに戻る</div>
+    </div>
+  </body>
+</html>
