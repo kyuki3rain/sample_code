@@ -1,7 +1,7 @@
 const answerType = [1, 0, 1, 1, 1, 0, 0, 0];
 const answerType2 = [1, 0, 1, 0, 1, 0, 0, 1];
-const answerRotate = [3, 3, 1, 3, 0, 1, 1, 0];
-const answerRotate2 = [3, 3, 1, 0, 0, 1, 1, 0];
+const answerRotate = [1, 1, 3, 1, 0, 3, 3, 0];
+const answerRotate2 = [1, 1, 3, 0, 0, 3, 3, 0];
 
 // https://q-az.net/elements-drag-and-drop/
 
