@@ -1,0 +1,65 @@
+.pieces {
+  width: 8vw;
+  height: 8vw;
+  cursor: move;
+  position: absolute;
+  z-index: 1000;
+}
+
+.pieces:hover {
+  background-color: gray;
+}
+
+.container {
+  flex-direction: row;
+  margin: 0 4vw;
+}
+
+.box {
+  width: 8vw;
+  height: 8vw;
+  border: 1px gray solid;
+  position: relative;
+  margin: 2vh 1vw;
+}
+
+.line {
+  width: 4vw;
+  height: 4vw;
+}
+
+.c {
+  border-left: 8px black solid;
+  border-top: 8px black solid;
+  border-bottom: 8px black solid;
+}
+.l {
+  border-left: 8px black solid;
+  border-bottom: 8px black solid;
+}
+
+.ansBox {
+  width: 8vw;
+  height: 8vw;
+  border: 1px gray solid;
+  margin: 0 1vw;
+}
+
+.text {
+  font-size: 5vh;
+  height: 10vh;
+}
+
+.main {
+  margin: 0;
+  height: 80vh;
+}
+
+.drag {
+  z-index: 1001;
+}
+
+.text {
+  font-size: 5vh;
+  height: 10vh;
+}

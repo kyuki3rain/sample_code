@@ -192,20 +192,7 @@ onload = function () {
     location.href = "../";
   });
 
-  //要素の取得
-  var elements = document.getElementsByClassName("pieces");
-  //マウスが要素内で押されたとき、又はタッチされたとき発火
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].id = i;
-    elements[i].addEventListener("mousedown", mdown, false);
-    elements[i].addEventListener("touchstart", mdown, false);
-  }
-
-  document.getElementById("reset").addEventListener("click", () => {
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].style.top = -1 + "px";
-      elements[i].style.left = -1 + "px";
-      nowPlace[i] = -1;
-    }
-  });
+  t = localStorage.stage2Flag.split(",");
+  t[3] = 1;
+  localStorage.stage2Flag = t;
 };

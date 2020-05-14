@@ -1,0 +1,82 @@
+.main {
+  margin: 0;
+  height: 80vh;
+}
+
+.text {
+  font-size: 5vh;
+  height: 10vh;
+}
+
+/* https://copypet.jp/774/ */
+
+.checkContainer {
+  width: 90%;
+  text-align: left;
+  position: relative;
+  height: 50vh;
+  border: 3px black solid;
+}
+.checkBox {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.15s ease-out 0s;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  background: #d7cbcb;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.checkBox:hover {
+  background: #d6a9a9;
+}
+.checkBox:checked {
+  background: #da3c41;
+}
+.checkBox:checked::before {
+  font-size: 20px;
+  line-height: 30px;
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  content: "✔";
+  text-align: center;
+}
+.checkBox.radio {
+  border-radius: 50%;
+}
+.checkBox.radio::after {
+  border-radius: 50%;
+}
+label {
+  line-height: 40px;
+  display: block;
+}
+.checkBox:disabled {
+  cursor: not-allowed;
+  background: #b8b7b7;
+}
+.checkBox:disabled::before {
+  font-size: 20px;
+  line-height: 30px;
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  content: "✖︎";
+  text-align: center;
+}
+
+.checkContainer .hide {
+  background: #fefefe;
+}
+.checkContainer .hide:hover {
+  background: #d6a9a9;
+}
+.checkContainer .hide:checked {
+  background: #da3c41;
+}

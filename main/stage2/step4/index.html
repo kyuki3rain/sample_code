@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sample Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../../../common.css" />
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div id="headerLeft"></div>
+      <div id="headerRight"></div>
+    </div>
+    <div class="main">
+      <div class="container">
+        <div class="text">すべてのcheckBoxにチェックを付けろ</div>
+        <div class="text" id="count">0/7</div>
+      </div>
+      <div class="checkContainer" style="position: relative;">
+        <!-- <input type="checkbox" class="checkBox hide" /> -->
+        <input type="checkbox" class="checkBox movex" />
+        <input type="checkbox" class="checkBox movey" />
+        <input type="checkbox" class="checkBox movex movey" />
+        <input type="checkbox" class="checkBox teleport" />
+        <input type="checkbox" class="checkBox movex" />
+        <input type="checkbox" class="checkBox movey" />
+        <input type="checkbox" class="checkBox movex movey" />
+        <input type="checkbox" class="checkBox blink" />
+        <input type="checkbox" class="checkBox blink movex" />
+        <input type="checkbox" class="checkBox blink movey" />
+        <input type="checkbox" class="checkBox teleport blink" />
+        <input type="checkbox" class="checkBox blink movex movey" />
+      </div>
+      <div id="stop">重かったら押してね</div>
+    </div>
+    <div class="footer">
+      <div id="backHome">戻る</div>
+    </div>
+  </body>
+</html>
