@@ -10,6 +10,7 @@ function remove(lines) {
 
 onload = function () {
   flagCheck();
+  stepflagCheck(0);
   document.getElementById("backHome").addEventListener("click", () => {
     location.href = "../";
   });

@@ -35,6 +35,7 @@ const makePosition = () => {
 
 onload = function () {
   flagCheck();
+  stepflagCheck(2);
   document.getElementById("backHome").addEventListener("click", () => {
     location.href = "../";
   });
