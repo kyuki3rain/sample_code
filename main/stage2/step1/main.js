@@ -2,6 +2,7 @@ const answer = [0, 10, 10, 10, 1, 1, 1, 1, 1, 9, 0, 0, 0];
 const changeWordCount = [1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4];
 
 onload = function () {
+  flagCheck();
   document.getElementById("backHome").addEventListener("click", () => {
     location.href = "../";
   });

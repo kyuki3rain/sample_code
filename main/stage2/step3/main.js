@@ -188,6 +188,7 @@ function clearCheck2() {
 }
 
 onload = function () {
+  flagCheck();
   document.getElementById("backHome").addEventListener("click", () => {
     location.href = "../";
   });

@@ -9,6 +9,7 @@ function remove(lines) {
 }
 
 onload = function () {
+  flagCheck();
   document.getElementById("backHome").addEventListener("click", () => {
     location.href = "../";
   });

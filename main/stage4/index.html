@@ -70,6 +70,7 @@
         flex-direction: column;
       }
     </style>
+    <script type="text/javascript" src="check.js"></script>
     <script>
       let text = [
         ["*i*wvb", "*****h", "**eaun"],
@@ -124,6 +125,7 @@
       }
 
       window.onload = function () {
+        flagCheck();
         document.getElementById("backHome").addEventListener("click", () => {
           location.href = "../";
         });
@@ -145,6 +147,9 @@
       function ans(e) {
         if (ANSWERS.includes(document.getElementById("answer").value)) {
           document.getElementById("text").innerHTML = "Clear!";
+          t = localStorage.stageFlag.split(",");
+          t[3] = 1;
+          localStorage.stageFlag = t;
           setTimeout(() => {
             location.href = "../../finish.html";
           }, 1000);

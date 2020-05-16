@@ -25,14 +25,15 @@ const makePosition = () => {
 };
 
 onload = function () {
+  flagCheck();
+  var query_string = window.location.search;
   document.getElementById("backHome").addEventListener("click", () => {
-    location.href = "../";
+    location.href = "../index.html" + query_string;
   });
 
   let animals = document.getElementsByClassName("animals");
   area = document.getElementsByClassName("main")[0].getBoundingClientRect();
 
-  var query_string = window.location.search;
   let parameter_key = "anim";
   var match_condition = new RegExp(parameter_key + "=[A-Za-z0-9-_%]+");
   if ((parameter = query_string.match(match_condition))) {

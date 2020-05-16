@@ -31,8 +31,10 @@ function changePer(x, y) {
 }
 
 onload = function () {
+  flagCheck();
+  var query_string = window.location.search;
   document.getElementById("backHome").addEventListener("click", () => {
-    location.href = "../";
+    location.href = "../index.html" + query_string;
   });
 
   area = document.getElementsByClassName("main")[0].getBoundingClientRect();
@@ -55,8 +57,7 @@ onload = function () {
     items[i + items.length / 2].style.top = ITEM_POSITIONS[i][0] + "px";
     items[i + items.length / 2].style.left = ITEM_POSITIONS[i][1] + "px";
     itemimages[i + items.length / 2].style.width = ITEM_SIZES[i] + "px";
-    console.log(items[i].style.top, items[i].style.left, items[i].style.width);
-    var query_string = window.location.search;
+
     let parameter_key = "item";
     var match_condition = new RegExp(parameter_key + "=[A-Za-z0-9-_%]+");
     if ((parameter = query_string.match(match_condition))) {

@@ -5,6 +5,7 @@
     <title>Sample Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../../common.css" />
+    <script type="text/javascript" src="check.js"></script>
     <style>
       .questionLink {
         font-size: 5vh;
@@ -76,6 +77,7 @@
         opacity: 0;
       }
     </style>
+    <script type="text/javascript" src="check.js"></script>
     <script type="text/javascript">
       let ansLength = [5, 3, 4];
       let ans = "";
@@ -102,6 +104,7 @@
         return query_string;
       }
       onload = () => {
+        flagCheck();
         document.getElementById("backHome").addEventListener("click", () => {
           location.href = "../";
         });
@@ -122,9 +125,11 @@
           query_string += "&answer=" + value;
         }
 
-        console.log(ans);
         if (ans === "とびら") {
           setTimeout(() => {
+            if (value === "ひらけごま") {
+              document.getElementById("doorText").innerHTML = "正解！";
+            }
             document.getElementsByClassName("door")[0].style.display = "flex";
             document.getElementsByClassName("wrapper")[0].style.opacity = "0";
             setTimeout(() => {
@@ -132,6 +137,7 @@
                 "none";
               document.getElementsByClassName("door")[0].style.opacity = "100%";
               if (value === "ひらけごま") {
+                document.getElementById("doorText").innerHTML = "正解！";
                 setTimeout(() => {
                   document.getElementsByClassName("doorImg")[1].style.display =
                     "flex";
@@ -186,7 +192,7 @@
     </div>
     <div class="main">
       <div class="door">
-        <div class="text" style="justify-self: start;">
+        <div class="text" id="doorText" style="justify-self: start;">
           答えに「ひらけごま」をいれてもう一度
         </div>
         <div class="img">

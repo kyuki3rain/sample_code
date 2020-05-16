@@ -99,8 +99,10 @@ const prefecturesKana = [
 ];
 
 onload = function () {
+  flagCheck();
+  var query_string = window.location.search;
   document.getElementById("backHome").addEventListener("click", () => {
-    location.href = "../";
+    location.href = "../index.html" + query_string;
   });
 
   let prefectures = document.getElementById("prefectures").children;
@@ -111,7 +113,6 @@ onload = function () {
     prefectures[i].addEventListener("mouseout", () => {
       prefectures[i].style.fill = "#bbee66";
     });
-    var query_string = window.location.search;
     let parameter_key = "pref";
     var match_condition = new RegExp(parameter_key + "=[A-Za-z0-9-_%]+");
     if ((parameter = query_string.match(match_condition))) {
