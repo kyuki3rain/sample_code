@@ -1,60 +1,14 @@
-.button {
-  display: inline-block;
-  width: 4vw;
-  height: 5vh;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #d6d6d6; /*ボタン色*/
-  color: #fff;
-  border-bottom: solid 4px #929292;
-  border-radius: 3px;
-  margin: 1vh;
-  color: black;
-  font-size: 1vw;
-}
-.button:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px); /*下に動く*/
-  border-bottom: none; /*線を消す*/
-}
-
-.tenkeyContainer {
-  flex-direction: row;
-}
-
-.text {
-  font-size: 3vh;
-  background-color: white;
-  height: 16vh;
-  width: 18vw;
-  align-items: flex-start;
-  padding-left: 1vw;
-  border-bottom-right-radius: 1vh;
-  border-bottom-left-radius: 1vh;
-}
-
-.tenkey {
-  background-color: black;
-  padding: 5vh;
-  height: 45vh;
-  border-top-right-radius: 4vh;
-  border-top-left-radius: 4vh;
-  width: 20vw;
-}
-
-.display {
-  background-color: black;
-  padding: 0 5vh 5vh;
-  border-bottom-right-radius: 4vh;
-  border-bottom-left-radius: 4vh;
-  height: 24vh;
-  width: 20vw;
-  justify-content: start;
-  margin-bottom: 1vh;
-}
-
 .main {
   margin: 0;
-  height: 80vh;
+  height: 1024px;
 }
+
+#prefectures path:not(:hover) {
+  fill: #bbee66;
+}
+#prefectures path:hover {
+  fill: #42afe3;
+}
+/* #prefectures path:not(:last-child) {
+  fill: #42afe3;
+} */

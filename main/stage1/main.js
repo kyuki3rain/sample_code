@@ -155,6 +155,7 @@ onload = function () {
   movieFunc();
 
   const ACode = "A".charCodeAt(0);
+  // http://cly7796.net/wp/javascript/create-elements-with-javascript/
 
   for (let i = 0; i < 26; i++) {
     var option = document.createElement("option");

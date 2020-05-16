@@ -1,81 +1,61 @@
-const answer = [3, 2, 1, 4, 0];
+const MIN_DISTANCE = 200;
 
-function remove(lines) {
-  for (let i = 0; i < core.length; i++) {
-    for (let j = 0; j < core.length; j++) {
-      lines[i][j].hide();
-    }
-  }
+let area;
+
+function distance(x, y) {
+  return Math.sqrt(x * x + y * y);
 }
+
+const makePosition = () => {
+  return {
+    top: Math.random() * area.height,
+    left: Math.random() * area.width,
+  };
+};
 
 onload = function () {
   document.getElementById("backHome").addEventListener("click", () => {
     location.href = "../";
   });
 
-  core = document.getElementsByClassName("core");
+  let animals = document.getElementsByClassName("animals");
+  area = document.getElementsByClassName("main")[0].getBoundingClientRect();
 
-  let lines = new Array(core.length);
-
-  for (let i = 0; i < core.length; i++) {
-    lines[i] = new Array(core.length);
-    for (let j = i + 1; j < core.length; j++) {
-      lines[i][j] = new LeaderLine(core[i], core[j], {
-        color: "red",
-        size: 5,
-        path: "straight",
-        endPlug: "behind",
-        hide: true,
-        showEffectName: "draw",
-      });
-    }
-  }
-
-  for (let i = 0; i < core.length; i++) {
-    for (let j = i + 1; j < core.length; j++) {
-      lines[i][j].hide();
-    }
-  }
-
-  let prevButton = 0;
-  let step = 0,
-    point = 0;
-
-  document.getElementById("reset").addEventListener("click", () => {
-    for (let i = 0; i < core.length; i++) {
-      for (let j = i + 1; j < core.length; j++) {
-        lines[i][j].hide();
-      }
-    }
-    prevButton = 0;
-    point = 0;
-    step = 0;
+  [].forEach.call(animals, (animal, i) => {
+    let position = makePosition();
+    animal.style.top = position.top + "px";
+    animal.style.left = position.left + "px";
+    console.log(animal.style.top);
   });
 
-  [].forEach.call(
-    document.getElementsByClassName("button"),
-    (element, index) => {
-      element.addEventListener("click", () => {
-        if (prevButton !== index) {
-          i = Math.min(prevButton, index);
-          j = Math.max(prevButton, index);
-          lines[i][j].show();
-          prevButton = index;
-          if (answer[step] === index) {
-            point++;
-            if (point >= answer.length) {
-              t = localStorage.stage2Flag.split(",");
-              t[1] = 1;
-              localStorage.stage2Flag = t;
-              setTimeout(() => {
-                alert("正解です。次の問題にすすみます。");
-                location.href = "../step3/index.html";
-              }, 200);
-            }
-          }
-          step++;
+  document.body.addEventListener(
+    "mousemove",
+    (e) => {
+      [].forEach.call(animals, (animal, i) => {
+        let rect = animal.getBoundingClientRect();
+        let starty = rect.top + rect.height / 2 - e.pageY;
+        let startx = rect.left + rect.width / 2 - e.pageX;
+
+        let x = startx,
+          y = starty;
+        while (distance(x, y) < MIN_DISTANCE) {
+          x += startx / 10;
+          y += starty / 10;
         }
+
+        let top = y + e.pageY - rect.height / 2 - area.top;
+        let left = x + e.pageX - rect.width / 2 - area.left;
+        console.log(area.top, area.left);
+
+        if (top < 0) top = 0;
+        if (left < 0) left = 0;
+        if (top > area.height - rect.height) top = area.height - rect.height;
+        if (left > area.width - rect.width) left = area.width - rect.width;
+
+        animal.style.top = top + "px";
+        animal.style.left = left + "px";
       });
-    }
+    },
+    false
   );
 };
