@@ -1,3 +1,11 @@
+.animals {
+  position: absolute;
+}
+
+.animals > img {
+  height: 200px;
+}
+
 .text {
   font-size: 5vh;
   height: 10vh;
@@ -6,26 +14,6 @@
 .main {
   margin: 0;
   height: 80vh;
-  background-color: black;
-}
-
-#wrapper {
-  height: 100%;
-  width: 100%;
-  clip-path: circle(12%);
-  background: url("./room.png");
-  background-size: 100% 100%;
-  /* filter: drop-shadow(5px 5px 10px #1a237e); */
-  filter: blur(5px);
-  position: absolute;
-}
-
-#room {
-  height: 100%;
-  width: 100%;
-  clip-path: circle(10%);
-  background: url("./room.png");
-  background-size: 100% 100%;
-  z-index: 10;
-  position: absolute;
+  width: 100vw;
+  position: relative;
 }

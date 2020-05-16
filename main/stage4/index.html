@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>stage4</title>
+    <style type="text/css">
+      body {
+        height: 100vh;
+        width: 56vw;
+        margin: 0 22vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+      }
+      #monitor {
+        width: 30vw;
+        height: 30vw;
+        border-radius: 30vw;
+        border: 0.3vw black solid;
+      }
+      #control {
+        width: 21vw;
+        display: flex;
+        flex-direction: column;
+      }
+      .row {
+        height: 7vw;
+        display: flex;
+      }
+      .but {
+        width: 6vw;
+        height: 6vw;
+        margin: 0.5vw;
+        border: 0.2vw black solid;
+        box-sizing: border-box;
+        font-size: 4vw;
+        text-align: center;
+        line-height: 6vw;
+      }
+      .inactive {
+        color: white;
+      }
+      .active {
+        color: black;
+      }
+      .active:hover {
+        background-color: black;
+        color: white;
+      }
+      #answer {
+        border: none;
+        width: 20vw;
+        height: 6vw;
+        font-size: 5vw;
+        margin: 0 auto;
+      }
+      #text {
+        color: white;
+        height: 4vw;
+        font-size: 3vw;
+        margin: 4vw auto;
+      }
+      #monitor {
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+    <script>
+      let text = [
+        ["*i*wvb", "*****h", "**eaun"],
+        ["", "1*h*l*", ""],
+        ["**thae", "*****i", "*s*ted"],
+      ];
+      let map = [1, 0, 3, 2, 4, 2, 3, 0, 3];
+      let canPush = [
+        [0, 0, 0, 0, 0, 0, 0, 1, 1],
+        [0, 0, 0, 1, 0, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 1, 1, 0],
+        [0, 1, 0, 0, 0, 1, 0, 1, 0],
+        [1, 0, 1, 1, 0, 1, 1, 0, 1],
+        [0, 1, 0, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 0, 0, 0],
+        [1, 1, 0, 0, 0, 0, 0, 0, 0],
+      ];
+      let movex = [-1, 0, 1, -1, 0, 1, -1, 0, 1];
+      let movey = [-1, -1, -1, 0, 0, 0, 1, 1, 1];
+      let turn = 0,
+        placex = 1,
+        placey = 1;
+
+      const ANSWERS = ["6", "six", "SIX", "Six"];
+
+      function setGame(i) {
+        placex = placex + movex[i];
+        placey = placey + movey[i];
+        document.getElementById("text").innerHTML = text[placex][placey];
+        for (let j = 0; j < 9; j++) {
+          if (canPush[placex + placey * 3][j] == 0) {
+            document.getElementsByClassName("but")[j].classList.add("inactive");
+            document
+              .getElementsByClassName("but")
+              [j].classList.remove("active");
+          } else {
+            document.getElementsByClassName("but")[j].classList.add("active");
+            document
+              .getElementsByClassName("but")
+              [j].classList.remove("inactive");
+          }
+        }
+        if (placex === 1 && placey === 1) {
+          document.getElementById("answer").value = "";
+          document.getElementById("answer").style.display = "block";
+        } else document.getElementById("answer").style.display = "none";
+        document.getElementById("monitor").style.backgroundColor = backC(
+          placex + placey * 3,
+          turn
+        );
+      }
+
+      window.onload = function () {
+        turn = location.hash ? Number(location.hash.split("#")[1]) - 1 : 0;
+        console.log(Number(location.hash.split("#")[1]), turn);
+        setGame(4);
+        for (let i = 0; i < 9; i++) {
+          document
+            .getElementsByClassName("but")
+            [i].addEventListener("click", function () {
+              if (canPush[placex + placey * 3][i] === 1) {
+                turn = (turn + 1) % 6;
+                location.hash = turn + 1;
+                setGame(i);
+              }
+            });
+        }
+      };
+      function ans(e) {
+        if (ANSWERS.includes(document.getElementById("answer").value)) {
+          document.getElementById("text").innerHTML = "Clear!";
+          setTimeout(() => {
+            location.href = "../../finish.html";
+          }, 1000);
+        } else {
+          document.getElementById("text").innerHTML = "Wrong!";
+        }
+      }
+      function backC(place, i) {
+        if (map[place] === 1 && (i % 8) / 4 + (i % 2) >= 1) return "black";
+        if (map[place] === 2 && (i % 8) / 4 + (i % 2) >= 2) return "black";
+        if (map[place] === 3 && (i % 8) / 4 + (i % 4) / 2 >= 1) return "black";
+        if (map[place] === 4 && i % 2 == 0)
+          if (i % 8 == 0) return "red";
+          else return "black";
+        else return "white";
+      }
+    </script>
+  </head>
+  <body>
+    <div id="monitor">
+      <div id="text">1*h*l*</div>
+      <input type="text" id="answer" onchange="ans()" />
+    </div>
+    <div id="control">
+      <div class="row">
+        <div class="but">↖</div>
+        <div class="but">↑</div>
+        <div class="but">↗</div>
+      </div>
+      <div class="row">
+        <div class="but">←</div>
+        <div class="but"></div>
+        <div class="but">→</div>
+      </div>
+      <div class="row">
+        <div class="but">↙</div>
+        <div class="but">↓</div>
+        <div class="but">↘</div>
+      </div>
+    </div>
+  </body>
+</html>

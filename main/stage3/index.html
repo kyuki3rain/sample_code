@@ -8,11 +8,17 @@
     <style>
       .questionLink {
         font-size: 5vh;
-        margin: 1vh;
+        height: 5vw;
         width: 20vw;
-        height: 10vh;
-        background-color: pink;
+        background-color: skyblue;
         border-radius: 5vh;
+      }
+      .arrowBox {
+        margin: 0 5vw;
+      }
+      .container {
+        flex-direction: row;
+        margin: 1vh 0;
       }
       #next {
         display: none;
@@ -26,44 +32,150 @@
         font-size: 5vh;
         height: 10vh;
       }
+      .textBox {
+        width: 5vw;
+        height: 5vw;
+        font-size: 4vw;
+        border: 2px black solid;
+        background-color: white;
+      }
+      .arrow {
+        width: 5vw;
+        height: 5vw;
+        font-size: 4vw;
+      }
+      .answerBox {
+        align-items: flex-start;
+      }
+      .wrapper {
+        width: 100%;
+        height: 100%;
+        transition: opacity 0.5s;
+      }
+      .door {
+        position: absolute;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        display: none;
+      }
+      .doorImg {
+        height: 100%;
+        position: absolute;
+        transition: opacity 0.5s;
+      }
+      .img {
+        position: relative;
+        height: 60vh;
+      }
+      .main {
+        position: relative;
+      }
+      .hide {
+        display: none;
+        opacity: 0;
+      }
     </style>
     <script type="text/javascript">
+      let ansLength = [5, 3, 4];
+      let ans = "";
+      function fillText(parameter_key, k, query_string) {
+        let value;
+
+        var match_condition = new RegExp(parameter_key + "=[A-Za-z0-9-_%]+");
+        if ((parameter = query_string.match(match_condition))) {
+          parameter_value = parameter[0].split("=")[1];
+          value = decodeURI(parameter_value);
+        } else {
+          value = "o".repeat(ansLength[k]);
+          let text = query_string ? "&" : "?";
+          query_string += text + parameter_key + "=" + value;
+          console.log(query_string);
+        }
+        ans += value[0];
+        for (let i = 0; i < value.length; i++) {
+          let div = document.createElement("div");
+          div.className = "textBox";
+          div.innerHTML = value[i].replace("o", " ");
+          document.getElementsByClassName("textContainer")[k].appendChild(div);
+        }
+        return query_string;
+      }
       onload = () => {
         document.getElementById("backHome").addEventListener("click", () => {
           location.href = "../";
         });
-        if (localStorage.stage2Flag == null) {
-          localStorage.stage2Flag = new Array(4).fill(0);
+        var query_string = window.location.search;
+
+        query_string = fillText("pref", 0, query_string);
+        query_string = fillText("item", 1, query_string);
+        query_string = fillText("anim", 2, query_string);
+
+        let value;
+
+        var match_condition = new RegExp("answer=[A-Za-z0-9-_%]+");
+        if ((parameter = query_string.match(match_condition))) {
+          parameter_value = parameter[0].split("=")[1];
+          value = decodeURI(parameter_value);
+        } else {
+          value = "o".repeat(5);
+          query_string += "&answer=" + value;
         }
-        stage2Flag = localStorage.stage2Flag.split(",");
-        // localStorageは文字列でしか入らないので、splitで配列に直し、要素もNumberで数字に戻す必要があります。
-        if (stage2Flag.reduce((p, c) => Number(p) + Number(c)) >= 4) {
-          document.getElementById("next").style.display = "flex";
+
+        console.log(ans);
+        if (ans === "とびら") {
+          setTimeout(() => {
+            document.getElementsByClassName("door")[0].style.display = "flex";
+            document.getElementsByClassName("wrapper")[0].style.opacity = "0";
+            setTimeout(() => {
+              document.getElementsByClassName("wrapper")[0].style.display =
+                "none";
+              document.getElementsByClassName("door")[0].style.opacity = "100%";
+              if (value === "ひらけごま") {
+                setTimeout(() => {
+                  document.getElementsByClassName("doorImg")[1].style.display =
+                    "flex";
+                  document.getElementsByClassName("doorImg")[0].style.opacity =
+                    "0";
+                  document.getElementsByClassName("doorImg")[1].style.opacity =
+                    "100%";
+                  setTimeout(() => {
+                    document.getElementsByClassName(
+                      "doorImg"
+                    )[0].style.display = "none";
+                    setTimeout(goToNextStage, 1000);
+                  }, 500);
+                }, 1000);
+              }
+            }, 500);
+          }, 1000);
+          document
+            .getElementsByClassName("doorImg")[0]
+            .addEventListener("click", () => {
+              let final_string = window.location.search;
+              let value;
+
+              var match_condition = new RegExp("answer=[A-Za-z0-9-_%]+");
+              if ((parameter = final_string.match(match_condition))) {
+                console.log(value);
+              }
+            });
         }
-        if (stage2Flag.reduce((p, c) => Number(p) + Number(c)) >= 1) {
-          document.getElementById("reset").style.display = "flex";
-        }
-        document.getElementById("reset").addEventListener("click", () => {
-          localStorage.stage2Flag = new Array(4).fill(0);
-          location.href = "index.html";
-        });
+
         [].forEach.call(
           document.getElementsByClassName("questionLink"),
           (q, i) => {
-            if (i == 0 || stage2Flag[i - 1] == 1)
-              q.addEventListener("click", () => {
-                location.href = "step" + (i + 1) + "/index.html";
-              });
-            // else q.style.backgroundColor = "rgba(0, 128, 0, 0.3)";
-            else q.style.opacity = "0.3";
+            q.addEventListener("click", () => {
+              location.href = "step" + (i + 1) + "/index.html" + query_string;
+            });
           }
         );
       };
       function goToNextStage() {
         t = localStorage.stageFlag.split(",");
-        t[0] = 1;
+        t[2] = 1;
         localStorage.stageFlag = t;
-        location.href = "../stage3/index.html";
+        location.href = "../stage4/index.html";
       }
     </script>
   </head>
@@ -73,19 +185,76 @@
       <div id="headerRight"></div>
     </div>
     <div class="main">
-      <div class="text">まだないので戻ってください、、、</div>
-      <!-- <div class="questionLink">step1</div>
-      <div class="questionLink">step2</div>
-      <div class="questionLink">step3</div>
-      <div class="questionLink">step4</div>
-      <input
-        type="button"
-        class="wideButton"
-        id="next"
-        onClick="goToNextStage()"
-        value="go to next stage!"
-      />
-      <div id="reset">リセットする</div> -->
+      <div class="door">
+        <div class="text" style="justify-self: start;">
+          答えに「ひらけごま」をいれてもう一度
+        </div>
+        <div class="img">
+          <img src="door_close.png" class="doorImg" />
+          <img src="door_open.png" class="doorImg hide" />
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="text">「とびら」を作れ</div>
+        <div class="container">
+          <div class="answerBox">
+            <div class="container">
+              <div class="arrow">↓</div>
+            </div>
+            <div class="container textContainer"></div>
+            <div class="container textContainer"></div>
+            <div class="container textContainer"></div>
+          </div>
+          <div class="arrowBox">
+            <div class="container">
+              <div class="arrow"></div>
+            </div>
+            <div class="container">
+              <div class="arrow">
+                ←
+              </div>
+            </div>
+            <div class="container">
+              <div class="arrow">
+                ←
+              </div>
+            </div>
+            <div class="container">
+              <div class="arrow">
+                ←
+              </div>
+            </div>
+          </div>
+          <div class="answerBox">
+            <div class="container">
+              <div class="arrow"></div>
+            </div>
+            <div class="container">
+              <div class="questionLink">
+                Step１
+              </div>
+            </div>
+            <div class="container">
+              <div class="questionLink">
+                Step２
+              </div>
+            </div>
+            <div class="container">
+              <div class="questionLink">
+                Step３
+              </div>
+            </div>
+          </div>
+        </div>
+        <input
+          type="button"
+          class="wideButton"
+          id="next"
+          onClick="goToNextStage()"
+          value="go to next stage!"
+        />
+        <div id="reset">リセットする</div>
+      </div>
     </div>
     <div class="footer">
       <div id="backHome">戻る</div>
