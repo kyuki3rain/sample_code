@@ -22,8 +22,16 @@
       }
 
       .start {
-        width: 20vh;
-        height: 8vh;
+        width: 30vw;
+        height: 12vh;
+        font-size: 6vh;
+        margin: 42vh 0;
+        background: url("startButton.png");
+        background-size: cover;
+        color: white;
+      }
+      .copyright {
+        justify-self: end;
       }
 
       .title {
@@ -55,6 +63,18 @@
         height: 15vh;
         background: black;
         margin: 0 3vw;
+      }
+      #icon1 {
+        background: url("icon1.png");
+        background-size: contain;
+      }
+      #icon2 {
+        background: url("icon2.png");
+        background-size: contain;
+      }
+      #icon3 {
+        background: url("icon3.png");
+        background-size: contain;
       }
 
       .textBox {
@@ -101,7 +121,9 @@
         height: 100vh;
       }
       #c1 {
-        background: url("main.jpg");
+        background: url("main.png");
+        background: contain;
+        height: 1080px;
       }
       .card {
         width: 70vw;
@@ -122,15 +144,18 @@
 
       #card1 {
         align-self: flex-start;
-        background-color: #f5c354;
+        background: url("card1.png");
+        background-size: cover;
       }
       #card2 {
         align-self: flex-end;
-        background-color: #f29d82;
+        background: url("card2.png");
+        background-size: cover;
       }
       .mainTitle {
         font-size: 10vh;
-        background: #32304b;
+        background: url("mainTitle.png");
+        background-size: cover;
         width: 100%;
         height: 20vh;
         color: white;
@@ -238,7 +263,7 @@
               </div>
             </div>
             <div class="item">
-              <div class="image"></div>
+              <div class="image" id="icon1"></div>
               <div class="textBox">
                 <div class="text">
                   新刊謎 2020
@@ -249,7 +274,7 @@
               </div>
             </div>
             <div class="item">
-              <div class="image"></div>
+              <div class="image" id="icon2"></div>
               <div class="textBox">
                 <div class="text">
                   DIALOGUE EQUATION
@@ -260,7 +285,7 @@
               </div>
             </div>
             <div class="item">
-              <div class="image"></div>
+              <div class="image" id="icon3"></div>
               <div class="textBox">
                 <div class="text">
                   Blue Ability
@@ -290,7 +315,7 @@
       </div>
       <div class="container">
         <input
-          class="start text"
+          class="start"
           type="button"
           value="CLICK HERE"
           onClick="start()"
