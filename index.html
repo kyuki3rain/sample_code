@@ -4,20 +4,27 @@
     <meta charset="UTF-8" />
     <title>Sample Code</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
     <link rel="stylesheet" type="text/css" href="common.css" />
     <style type="text/css">
       .main {
         height: 100vh;
         margin: 0;
+        justify-content: normal;
       }
-
       .container {
         height: 100vh;
         width: 100vw;
         display: none;
       }
 
+      body *{
+        font-family: 'Noto Sans Japanese',   sans-serif;
+        font-weight: 500;
+      }
+      
       .mainDesign{
+        justify-content: normal;
         height:auto;
       }
 
@@ -33,6 +40,7 @@
         background: url("startButton.png");
         background-size: cover;
         color: white;
+        font-weight: 700;
       }
       .copyright {
         margin: 4vh;
@@ -117,6 +125,7 @@
       }
       .text2 {
         font-size: 4vh;
+        font-weight: 400;
       }
 
       .titleText {
@@ -140,7 +149,7 @@
         height: 100vh;
       }
       #c1 {
-        
+        justify-content: normal;
         width: 100vw;
       }
       .card {
@@ -160,6 +169,15 @@
         background: #f5c354;
       }
 
+      #tab1{
+        background: url("HP.png");
+        background-size: cover;
+      }
+      #tab2{
+        background: url("LINE.png");
+        background-size: cover;
+      }
+
       #card1 {
         align-self: flex-start;
         background: url("card1.png");
@@ -177,6 +195,7 @@
         width: 100%;
         height: 20vh;
         color: white;
+        font-weight: 700;
       }
       .subTextContainer {
         height: 80vh;
@@ -247,7 +266,7 @@
         <div id="content">
           <div class="table">
             <div class="tableTitleContainer">
-              <div class="text tableTitle">
+              <div class="text tableTitle" id="tab1">
                 HP(PC推奨)
               </div>
             </div>
@@ -278,7 +297,7 @@
           </div>
           <div class="table">
             <div class="tableTitleContainer">
-              <div class="text tableTitle">
+              <div class="text tableTitle" id="tab2">
                 LINE謎
               </div>
             </div>
@@ -324,11 +343,14 @@
         </div>
         <div class="subTextContainer">
           <div class="text2">
-            WEB制作の見本に作りました。<br />
-            ソースコードも公開しているので気になることは聞いてね！
+            <div>WEB制作の見本に作りました</div>
+            <div>謎解きに使用する様々な表現・ギミックが詰め込まれています</div>
+          </div>
+          <div class="text2">
+            ソースコードはドライブに入ってるので参考にしてね！
           </div>
           <div class="titleText">
-            詳細はころまで
+            質問があれば9期 ころまで
           </div>
           <div class="text"></div>
         </div>

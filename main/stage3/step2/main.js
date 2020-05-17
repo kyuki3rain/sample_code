@@ -2,26 +2,26 @@ let area;
 
 const ITEM_NAMES = [
   "びーる",
-  "ああああ",
-  "ああああ",
-  "あああああ",
-  "あああああ",
-  "ああああ",
+  "かけどけい",
+  "めろんぱん",
+  "こーら",
+  "すいっち",
+  "はりがみ",
 ];
 
 const ITEM_POSITIONS = [
   // [top,left]
-  [400, 100],
-  [100, 100],
-  [100, 100],
-  [100, 100],
-  [100, 100],
-  [100, 100],
+  [500, 100],
+  [100, 400],
+  [550, 850],
+  [500, 1000],
+  [400, 1400],
+  [200, 1800],
   [100, 100],
   [100, 100],
 ];
 
-const ITEM_SIZES = [200, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+const ITEM_SIZES = [150, 200, 150, 50, 500, 100, 100, 100, 100, 100, 100];
 
 function changePer(x, y) {
   return {
@@ -44,7 +44,7 @@ onload = function () {
     document.getElementById("wrapper").style.clipPath =
       "circle(12% at " + per.x + "% " + per.y + "%)";
     document.getElementById("room").style.clipPath =
-      "circle(10% at " + per.x + "% " + per.y + "%)";
+      "circle(8% at " + per.x + "% " + per.y + "%)";
   });
 
   items = document.getElementsByClassName("items");
