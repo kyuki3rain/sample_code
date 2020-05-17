@@ -53,4 +53,5 @@
 .main {
   margin: 0;
   height: 80vh;
+  user-select: none;
 }
