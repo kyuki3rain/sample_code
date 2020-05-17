@@ -210,14 +210,14 @@
         document.removeEventListener("click",set,false);
           document.getElementById("mov").addEventListener("ended", () => {
             document.getElementById("movContainer").style.opacity = "0";
+            [].forEach.call(
+              document.getElementsByClassName("container"),
+              (element, i) => {
+                element.style.display = "flex";
+              }
+              );
             setTimeout(()=>{
               document.getElementById("movContainer").style.display = "none";
-              [].forEach.call(
-                document.getElementsByClassName("container"),
-                (element, i) => {
-                  element.style.display = "flex";
-                }
-                );
                 document.getElementsByClassName("main")[0].style.height = "500vh";
               scrollTo(0, 40000);
             },500);
