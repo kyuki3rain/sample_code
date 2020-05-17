@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="../../common.css" />
+    <link rel="stylesheet" type="text/css" href="../../../common.css" />
     <title>stage4</title>
     <style type="text/css">
       .main {
@@ -127,7 +127,7 @@
       window.onload = function () {
         flagCheck();
         document.getElementById("backHome").addEventListener("click", () => {
-          location.href = "../";
+          location.href = "../../";
         });
         turn = location.hash ? Number(location.hash.split("#")[1]) - 1 : 0;
         console.log(Number(location.hash.split("#")[1]), turn);
@@ -151,7 +151,7 @@
           t[3] = 1;
           localStorage.stageFlag = t;
           setTimeout(() => {
-            location.href = "../../finish.html";
+            location.href = "../../../finish.html";
           }, 1000);
         } else {
           document.getElementById("text").innerHTML = "Wrong!";

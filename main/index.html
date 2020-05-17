@@ -49,7 +49,11 @@
           (q, i) => {
             if (i == 0 || stageFlag[i - 1] == 1)
               q.addEventListener("click", () => {
-                location.href = "stage" + (i + 1) + "/index.html";
+                if (i == 3) {
+                  location.href = "stage" + 4 + "/435261/index.html";
+                } else {
+                  location.href = "stage" + (i + 1) + "/index.html";
+                }
               });
             // else q.style.backgroundColor = "rgba(0, 128, 0, 0.3)";
             else q.style.opacity = "0.3";
