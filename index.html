@@ -205,10 +205,10 @@
 
     <script>
       function set(){
-//         document.getElementById("mov").play();
-//         document.getElementById("mov").volume = 1;
-//         document.removeEventListener("click",set,false);
-//           document.getElementById("mov").addEventListener("ended", () => {
+        document.getElementById("mov").play();
+        document.getElementById("mov").volume = 1;
+        document.removeEventListener("click",set,false);
+          document.getElementById("mov").addEventListener("ended", () => {
             document.getElementById("movContainer").style.opacity = "0";
             [].forEach.call(
               document.getElementsByClassName("container"),
@@ -219,10 +219,10 @@
             setTimeout(()=>{
               document.getElementById("movContainer").style.display = "none";
                 document.getElementsByClassName("main")[0].style.height = "500vh";
-//               scrollTo(0, 40000);
+              scrollTo(0, 40000);
             },500);
-//             // http://www.htmq.com/video/
-//           });
+            // http://www.htmq.com/video/
+          });
       }
       const start = () => {
         location.href = "./main/index.html";
@@ -235,9 +235,9 @@
 
   <body>
     <div class="main">
-<!--       <div id="movContainer">
+      <div id="movContainer">
         <video src="./op.mp4" id="mov"></video>
-      </div> -->
+      </div>
       <div class="container mainDesign">
         <img src="main.png" id="c1"/>
       </div>
